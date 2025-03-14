@@ -1,0 +1,34 @@
+From 4fb6342a42954c7706b5f9d9d9f24d755272c4a4 Mon Sep 17 00:00:00 2001
+From: Kinsey Moore <kinsey.moore@oarcorp.com>
+Date: Sat, 1 Mar 2025 19:24:45 -0600
+Subject: [PATCH] bsps/dev/irq/arm-gic: Document the GICD_IROUTER offset
+
+The GICD_IROUTER register technically starts at offset 0x6000, but the
+first 32 IRQ entries are reserved making IRQ 32's entry at 0x6100 the
+first usable entry. This register is not currently used, so only a
+comment is added to that effect.
+
+Closes #5223
+---
+ bsps/include/dev/irq/arm-gic-regs.h | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/bsps/include/dev/irq/arm-gic-regs.h b/bsps/include/dev/irq/arm-gic-regs.h
+index be961b15f0..62c3ed4f51 100644
+--- a/bsps/include/dev/irq/arm-gic-regs.h
++++ b/bsps/include/dev/irq/arm-gic-regs.h
+@@ -209,6 +209,11 @@ typedef struct {
+   uint32_t reserved_3680[288];
+   uint32_t gicd_inmire[32];
+   uint32_t reserved_3b80[2400];
++  /*
++   * GICD_IROUTER's offset is 0x6100 because its first entry points to IRQ 32.
++   * IRQ 0-31 are reserved for GICD_IROUTER, otherwise its offset would be
++   * 0x6000.
++   */
+   uint64_t gicd_irouter[992];
+   uint64_t gicd_iroutere[4096];
+ } gic_dist;
+-- 
+2.48.1
+
