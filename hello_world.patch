@@ -1,0 +1,13 @@
+diff --git a/testsuites/samples/hello/init.c b/testsuites/samples/hello/init.c
+index 83f6342ab3..95ed506a45 100644
+--- a/testsuites/samples/hello/init.c
++++ b/testsuites/samples/hello/init.c
+@@ -33,7 +33,7 @@
+ #include <rtems.h>
+ #include <tmacros.h>
+ 
+-const char rtems_test_name[] = "HELLO WORLD";
++const char rtems_test_name[] = "Hello World from Mayank";
+ 
+ static rtems_task Init(
+   rtems_task_argument ignored
