@@ -1,13 +1,11 @@
-From ddcaea6bc4224ec2620b8120839ade094681a402 Mon Sep 17 00:00:00 2001
+From 8411d9db5f535e98231497d13bf43251e89d3d5d Mon Sep 17 00:00:00 2001
 From: root <root@ff.3bx3wqouro5e1cjgrqsvxud2kf.ux.internal.cloudapp.net>
-Date: Sun, 16 Mar 2025 03:17:39 +0000
+Date: Sun, 16 Mar 2025 03:28:08 +0000
 Subject: [PATCH] Hello World from Mayank
 
 ---
- testsuites/samples/hello/init.c      |  2 +-
- testsuites/samples/hello/init.c.save | 63 ++++++++++++++++++++++++++++
- 2 files changed, 64 insertions(+), 1 deletion(-)
- create mode 100644 testsuites/samples/hello/init.c.save
+ testsuites/samples/hello/init.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/testsuites/samples/hello/init.c b/testsuites/samples/hello/init.c
 index 83f6342ab3..95ed506a45 100644
@@ -22,75 +20,6 @@ index 83f6342ab3..95ed506a45 100644
  
  static rtems_task Init(
    rtems_task_argument ignored
-diff --git a/testsuites/samples/hello/init.c.save b/testsuites/samples/hello/init.c.save
-new file mode 100644
-index 0000000000..95ed506a45
---- /dev/null
-+++ b/testsuites/samples/hello/init.c.save
-@@ -0,0 +1,63 @@
-+/* SPDX-License-Identifier: BSD-2-Clause */
-+
-+/*
-+ *  COPYRIGHT (c) 1989-2012.
-+ *  On-Line Applications Research Corporation (OAR).
-+ *
-+ * Redistribution and use in source and binary forms, with or without
-+ * modification, are permitted provided that the following conditions
-+ * are met:
-+ * 1. Redistributions of source code must retain the above copyright
-+ *    notice, this list of conditions and the following disclaimer.
-+ * 2. Redistributions in binary form must reproduce the above copyright
-+ *    notice, this list of conditions and the following disclaimer in the
-+ *    documentation and/or other materials provided with the distribution.
-+ *
-+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
-+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
-+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
-+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
-+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-+ * POSSIBILITY OF SUCH DAMAGE.
-+ */
-+
-+#ifdef HAVE_CONFIG_H
-+#include "config.h"
-+#endif
-+
-+#include <rtems.h>
-+#include <tmacros.h>
-+
-+const char rtems_test_name[] = "Hello World from Mayank";
-+
-+static rtems_task Init(
-+  rtems_task_argument ignored
-+)
-+{
-+  rtems_print_printer_fprintf_putc(&rtems_test_printer);
-+  TEST_BEGIN();
-+  printf( "Hello World\n" );
-+  TEST_END();
-+  rtems_test_exit( 0 );
-+}
-+
-+
-+/* NOTICE: the clock driver is explicitly disabled */
-+#define CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER
-+#define CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER
-+
-+#define CONFIGURE_MAXIMUM_TASKS            1
-+
-+#define CONFIGURE_RTEMS_INIT_TASKS_TABLE
-+
-+#define CONFIGURE_INIT_TASK_ATTRIBUTES RTEMS_FLOATING_POINT
-+
-+#define CONFIGURE_INITIAL_EXTENSIONS RTEMS_TEST_INITIAL_EXTENSION
-+
-+#define CONFIGURE_INIT
-+#include <rtems/confdefs.h>
 -- 
 2.43.0
 
